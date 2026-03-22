@@ -172,6 +172,7 @@ class HomeScreen(QFlow.Screen):
         keyboard.add_hotkey(RELATIVES.RelativesFile.get('key-combination'), handleHotkey)
 
     def copyKey(self):
+        # Copy key in clipboard
         clipboard = QApplication.clipboard()
         clipboard.setText(self.key)
 
@@ -182,8 +183,11 @@ class HomeScreen(QFlow.Screen):
         ).show()
     
     def deleteKey(self):
-        self.parent().updateKey('') # Set IC key in blank        
-        self.parent().setScreen('setup') # Move to setup
+        self.parent().updateKey('') # Set IC key in blank
+            
+        self.parent().setScreen('setup', args={
+            'deleteKey': True
+        }) # Move to setup and set flag to clear the form
 
         Notify(
             self.Config.texts.keyDeleted,
