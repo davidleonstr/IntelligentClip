@@ -39,11 +39,11 @@ class KeyForm(QWidget):
 
         self.logo = QLabel()
 
-        pixmap = QPixmap(self.Config.icons.appIcon)
+        logoPixmap = QPixmap(self.Config.icons.appIcon)
 
-        pixmap = pixmap.scaled(120, 120, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        logoPixmap = logoPixmap.scaled(120, 120, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
-        self.logo.setPixmap(pixmap)
+        self.logo.setPixmap(logoPixmap)
         self.logo.setAlignment(Qt.AlignCenter)
 
         self.inputKey = QLineEdit()
@@ -99,8 +99,7 @@ class KeyForm(QWidget):
 
 @QFlow.screen(
     name='setup',
-    parentType=QFlow.App,
-    autoreloadUI=True
+    parentType=QFlow.App
 )
 @config(SCREENCONFIG)
 @session()
@@ -109,12 +108,22 @@ class SetupScreen(QFlow.Screen):
         self.args['parent'] = parent
         super().__init__(**self.args)
 
-    def UI(self):
+    def effect(self):
+        # Get params
         self.params = QFlow.hooks.Params(self).get()
 
-        # If key
-        self.key = self.params.get('key', False)
+        # Delete key from field
+        if self.params.get('deleteKey', False):
+            # Clear input
+            self.keyForm.inputKey.clear()
 
+            # Enable button
+            self.keyForm.btnConfirm.setEnabled(True)
+
+            # Delete flag
+            self.params.pop('deleteKey')
+
+    def UI(self):
         # Create screen layout
         self.screenlayout = QVBoxLayout()
 
