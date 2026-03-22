@@ -9,12 +9,12 @@ QWidget {
 }
 
 QLineEdit {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: #222527;
+    border: 1px solid rgb(43, 43, 43);
     border-radius: 4px;
     padding: 6px 10px;
     font-size: 13px;
-    color: #2c3e50; /* TEXTO OSCURO (FIX) */
+    color: #ffffff;
     selection-background-color: #3498db;
     selection-color: #ffffff;
 }

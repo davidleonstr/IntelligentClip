@@ -102,12 +102,5 @@ This cipher is not cryptographically strong and is intended as obfuscation, not 
 
 # Screenshots
 
-![Screenshot](screenshots/snapshot-3.png)
-![Screenshot](screenshots/snapshot-4.png)
-
-<br>
-<hr>
-<br>
-
 ![Screenshot](screenshots/snapshot-1.png)
 ![Screenshot](screenshots/snapshot-2.png)
