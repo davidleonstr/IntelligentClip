@@ -2,14 +2,14 @@
     "texts": {
         "welcomeMessage": "Welcome to Home",
         "homeTitle": "IC HOME",
-        "keyLabel": "IC Key: ",
-        "copyKey": "Copy Key",
+        "keyLabel": "Gemini Key: ",
+        "copyKey": "Copy Gemini Key",
         "enableListener": "Enable Service:",
         "selectModel": "Select Your Model:",
         "help": "?",
-        "keyCopied": "IC Key Copied",
-        "deleteKey": "DELETE IC KEY",
-        "keyDeleted": "IC Key Deleted",
+        "keyCopied": "Gemini Key Copied",
+        "deleteKey": "DELETE GEMINI KEY",
+        "keyDeleted": "Gemini Key Deleted",
         "changesApplied": "Changes Applied"
     },
     "icons": {
