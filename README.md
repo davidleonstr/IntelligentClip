@@ -1,15 +1,12 @@
 <div align="center">
   <img src="resources/icons/app-icon.svg" alt="QFlow Icon" width="180"/>
   <br/>
-  
-  <br>
-
-  [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-  [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
 </div>
 
 # IC — Intelligent Clipboard
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 IC is a lightweight desktop application that enhances your clipboard workflow with AI-powered text processing. By listening for a configurable keyboard shortcut, IC captures your clipboard content, sends it to a Gemini language model, and replaces it with the model's response — all without interrupting your work.
 
