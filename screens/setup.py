@@ -114,14 +114,23 @@ class SetupScreen(QFlow.Screen):
 
         # Delete key from field
         if self.params.get('deleteKey', False):
-            # Clear input
-            self.keyForm.inputKey.clear()
+            # Helper
+            def delete():
+                # Clear input
+                self.keyForm.inputKey.clear()
 
-            # Enable button
-            self.keyForm.btnConfirm.setEnabled(True)
+                # Enable button
+                self.keyForm.btnConfirm.setEnabled(True)
 
-            # Delete flag
-            self.params.pop('deleteKey')
+                # Delete flag
+                self.params.pop('deleteKey')
+
+            if hasattr(self, 'keyForm'):
+                delete() # Use helper
+                return # Return function
+            
+            # Use a timer to wait for the UI to render if it didn't render from the start
+            QTimer.singleShot(0, delete)
 
     def UI(self):
         # Create screen layout
