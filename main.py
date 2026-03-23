@@ -19,12 +19,14 @@ from qtpy.QtGui import QIcon
 import os
 
 # Import HomeScreen
-from screens import SetupScreen, HomeScreen
+from screens import SetupScreen, HomeScreen, ErrorScreen
 
 # Import default template
 from templates import DefaultTemplate
 
 import base64
+
+from helpers import hasInternet
 
 @QFlow.app(
     title=APPCONFIG.get('title'), 
@@ -39,10 +41,20 @@ class App(QFlow.App):
         # Create SetupScreen
         self.setupScreen = SetupScreen(parent=self)
         self.homeScreen = HomeScreen(parent=self)
+        self.errorScreen = ErrorScreen(parent=self)
         
         # Add screens
         self.addScreen(self.setupScreen)
         self.addScreen(self.homeScreen)
+        self.addScreen(self.errorScreen)
+
+        # If not have internet
+        if hasInternet():
+            # Error screen
+            self.setScreen(self.errorScreen.name)
+
+            # Stop here
+            return 
 
         # Initial screen
         initialScreen = self.setupScreen.name
