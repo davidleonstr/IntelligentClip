@@ -1,25 +1,17 @@
 import QFlow
-from QFlow.modules import config, session
-
-from config import CONFIG
-from helpers import JSONFile, ObjectBuilder
-
-SCREENCONFIG = ObjectBuilder(
-    JSONFile(CONFIG.folders['configs']['screens']['setup']).read()
-).obj
+from QFlow.modules import session
 
 from qtpy.QtWidgets import (
     QVBoxLayout
 )
 from qtpy.QtCore import QUrl
-from PyQt6.QtWebEngineWidgets import QWebEngineView
+from qtpy.QtWebEngineWidgets import QWebEngineView
 import os
 
 @QFlow.screen(
     name='error',
     parentType=QFlow.App
 )
-@config(SCREENCONFIG)
 @session()
 class ErrorScreen(QFlow.Screen):
     def __init__(self, parent):
@@ -35,7 +27,7 @@ class ErrorScreen(QFlow.Screen):
         # Set screen
         path = os.path.abspath('screens/html/error-screen.html')
         self.browser.setUrl(QUrl.fromLocalFile(path))
-        
+
         # Add browser
         self.screenlayout.addWidget(self.browser)
 
