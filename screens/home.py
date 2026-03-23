@@ -129,6 +129,11 @@ class HomeScreen(QFlow.Screen):
         
         self.helpButton = QPushButton(self.Config.texts.help)
 
+        # Move to help screens
+        self.helpButton.clicked.connect(
+            lambda: self.parent().setScreen('help')
+        )
+
         self.bottom.addWidget(self.helpButton)
 
         self.screenlayout.addLayout(self.nav)

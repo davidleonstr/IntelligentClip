@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Help</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #1e1e1e;
+        --surface: #272727;
+        --border: #333333;
+        --accent: #4ade80;
+        --accent-dim: rgba(74, 222, 128, 0.08);
+        --accent-border: rgba(74, 222, 128, 0.25);
+        --text: #e8e8e8;
+        --text-muted: rgba(232, 232, 232, 0.5);
+        --text-faint: rgba(232, 232, 232, 0.25);
+        --mono: 'IBM Plex Mono', monospace;
+        --sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-weight: 300;
+        overflow-x: hidden;
+        cursor: default;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle grid texture */
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 32px 32px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* ── Layout ── */
+    #page {
+        position: relative;
+        z-index: 1;
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 60px 32px 80px;
+        animation: fadeIn 0.5s ease both;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Header ── */
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 48px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .header-icon {
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 0 16px rgba(74, 222, 128, 0.15);
+    }
+
+    .header-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--accent);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .header-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--accent);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 2px;
+    }
+
+    h1 {
+        font-size: 1.35rem;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: var(--text);
+    }
+
+    /* ── Section ── */
+    .section {
+        margin-bottom: 40px;
+        animation: fadeIn 0.5s ease both;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.07s; }
+    .section:nth-child(3) { animation-delay: 0.14s; }
+    .section:nth-child(4) { animation-delay: 0.21s; }
+    .section:nth-child(5) { animation-delay: 0.28s; }
+
+    .section-title {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--accent);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+
+    /* ── Steps ── */
+    .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .step {
+        display: grid;
+        grid-template-columns: 32px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .step:last-child {
+        border-bottom: none;
+    }
+
+    .step-num {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--accent);
+        padding-top: 2px;
+        opacity: 0.7;
+    }
+
+    .step-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 5px;
+    }
+
+    .step-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.65;
+    }
+
+    /* ── Info card ── */
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 20px 22px;
+        margin-bottom: 12px;
+    }
+
+    .card-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 6px;
+    }
+
+    .card-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.65;
+    }
+
+    /* ── Hotkey display ── */
+    .hotkey-display {
+        background: var(--accent-dim);
+        border: 1px solid var(--accent-border);
+        border-radius: 8px;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .hotkey-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.5;
+        max-width: 340px;
+    }
+
+    .keys {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+    }
+
+    kbd {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--accent);
+        background: var(--bg);
+        border: 1px solid var(--accent-border);
+        border-radius: 5px;
+        padding: 5px 10px;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+    }
+
+    .key-sep {
+        font-size: 11px;
+        color: var(--text-faint);
+        font-family: var(--mono);
+    }
+
+    /* ── Warning note ── */
+    .note {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        background: rgba(251, 191, 36, 0.05);
+        border: 1px solid rgba(251, 191, 36, 0.2);
+        border-radius: 8px;
+        padding: 16px 18px;
+        margin-top: 12px;
+    }
+
+    .note-icon {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+
+    .note-icon svg {
+        width: 16px;
+        height: 16px;
+        stroke: rgba(251, 191, 36, 0.8);
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .note-text {
+        font-size: 12.5px;
+        color: rgba(232, 232, 232, 0.55);
+        line-height: 1.6;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        margin-top: 56px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--text-faint);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+</head>
+<body>
+
+<div id="page">
+    <!-- Header -->
+    <div class="header">
+        <div class="header-icon">
+            <svg viewBox="0 0 24 24">
+                <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+                <rect x="9" y="3" width="6" height="4" rx="1"/>
+                <path d="M9 12h6M9 16h4"/>
+            </svg>
+        </div>
+        <div class="header-text">
+            <div class="header-label">IC — Intelligent Clipboard</div>
+            <h1>User Guide</h1>
+        </div>
+    </div>
+
+    <!-- Getting Started -->
+    <div class="section">
+        <div class="section-title">Getting started</div>
+        <div class="steps">
+            <div class="step">
+                <span class="step-num">01</span>
+                <div class="step-body">
+                    <div class="step-title">Enter your API key</div>
+                    <div class="step-desc">On first launch, the setup screen will appear. Paste your Gemini API key into the input field and press Confirm. The key will be validated and stored locally in encrypted form.</div>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">02</span>
+                <div class="step-body">
+                    <div class="step-title">Select a model</div>
+                    <div class="step-desc">Once on the home screen, IC will load all Gemini models available for your key. Use the dropdown to select the model you want to use for processing.</div>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">03</span>
+                <div class="step-body">
+                    <div class="step-title">Enable the listener</div>
+                    <div class="step-desc">Toggle the listener switch to activate hotkey detection. The application will now monitor your keyboard in the background while it is running.</div>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">04</span>
+                <div class="step-body">
+                    <div class="step-title">Copy text and trigger IC</div>
+                    <div class="step-desc">Select any text in any application and copy it to your clipboard. Then press the hotkey. IC will process the content through Gemini and write the result back to your clipboard.</div>
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">05</span>
+                <div class="step-body">
+                    <div class="step-title">Paste the result</div>
+                    <div class="step-desc">Once processing is complete, simply paste as you normally would. The clipboard now contains the AI-processed version of your original text.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotkey -->
+    <div class="section">
+        <div class="section-title">Hotkey</div>
+        <div class="hotkey-display">
+            <div class="hotkey-desc">Press this combination at any time while the listener is enabled to trigger clipboard processing.</div>
+            <div class="keys">
+                <kbd>Ctrl</kbd>
+                <span class="key-sep">+</span>
+                <kbd>I</kbd>
+            </div>
+        </div>
+        <div class="note">
+            <div class="note-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+            </div>
+            <div class="note-text">If the hotkey does not respond, make sure the listener toggle is enabled on the home screen and that IC is running in the foreground or background. Triggering the hotkey while a previous request is still processing will have no effect.</div>
+        </div>
+    </div>
+
+    <!-- Home screen reference -->
+    <div class="section">
+        <div class="section-title">Home screen reference</div>
+        <div class="card">
+            <div class="card-title">API Key</div>
+            <div class="card-desc">Displays your stored key in masked form. Use the Copy button to copy the raw key to the clipboard at any time.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Model selector</div>
+            <div class="card-desc">Lists all Gemini models available under your API key that support content generation. The selected model is used for every request until you change it.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Listener toggle</div>
+            <div class="card-desc">Enables or disables hotkey detection. When off, pressing the hotkey will have no effect even if IC is running.</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Delete key</div>
+            <div class="card-desc">Removes the stored API key and returns the application to the setup screen. You will need to enter a valid key again before using IC.</div>
+        </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="section">
+        <div class="section-title">How it works</div>
+        <div class="card">
+            <div class="card-desc">When the hotkey is pressed, IC reads the current contents of your clipboard and sends them to the selected Gemini model along with a preconfigured system prompt. The model's response is written back to the clipboard, replacing the original content. The entire operation runs in the background without interrupting your active window.</div>
+        </div>
+        <div class="note">
+            <div class="note-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+            </div>
+            <div class="note-text">Processing time depends on the selected model and the length of the clipboard content. Avoid triggering the hotkey multiple times in quick succession — concurrent requests are blocked automatically, but repeated attempts will not speed up the result.</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span>IC — Intelligent Clipboard</span>
+        <span>v1.0</span>
+    </div>
+</div>
+</body>
+</html>
