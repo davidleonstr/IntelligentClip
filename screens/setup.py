@@ -40,7 +40,6 @@ class KeyForm(QWidget):
         self.logo = QLabel()
 
         logoPixmap = QPixmap(self.Config.icons.appIcon)
-
         logoPixmap = logoPixmap.scaled(120, 120, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
         self.logo.setPixmap(logoPixmap)
@@ -80,7 +79,15 @@ class KeyForm(QWidget):
         container.addWidget(self.title)
         container.addSpacing(10)
 
-        formLayout.addRow(self.Config.texts.keyIndicator, self.inputKey)
+        self.geminiLogo = QLabel()
+
+        geminiPixmap = QPixmap(self.Config.icons.geminiIcon)
+        geminiPixmap = geminiPixmap.scaled(31, 31, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+
+        self.geminiLogo.setPixmap(geminiPixmap)
+        self.geminiLogo.setAlignment(Qt.AlignCenter)
+
+        formLayout.addRow(self.geminiLogo, self.inputKey)
 
         container.addLayout(formLayout)
         container.addSpacing(10)
