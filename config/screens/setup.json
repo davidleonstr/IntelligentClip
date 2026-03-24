@@ -3,7 +3,6 @@
         "title": "WELCOME, USER!\nSET YOUR INTELLIGENT CLIP KEY",
         "inputKeyPlaceholder": "Ej: AIzaSyB-8jL2kXnZ_m4P9qWv1tR5uS7y3x0A_Bc",
         "confirm": "CONFIRM",
-        "keyIndicator": "Gemini Key: ",
         "hello": "Welcome to Intelligent Clip",
         "invalidKey": "Failed Verification",
         "validKey": "Successful Verification",
@@ -12,6 +11,7 @@
         "appName": "INTELLIGENT CLIP"
     },
     "icons": {
-        "appIcon": "resources/icons/app-icon.svg"
+        "appIcon": "resources/icons/app-icon.svg",
+        "geminiIcon": "resources/icons/gemini-icon.svg"
     }
 }
