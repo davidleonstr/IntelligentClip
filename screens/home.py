@@ -10,7 +10,7 @@ SCREENCONFIG = ObjectBuilder(
 ).obj
 
 from qtpy.QtWidgets import (
-    QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication
+    QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication, QGraphicsBlurEffect
 )
 from qtpy.QtCore import Qt
 from qtpy.QtGui import QPixmap
@@ -33,6 +33,7 @@ class HomeScreen(QFlow.Screen):
         self.args['parent'] = parent
         super().__init__(**self.args)
 
+        # If request is running
         self.isRunning = False
 
     def UI(self):
@@ -78,8 +79,9 @@ class HomeScreen(QFlow.Screen):
 
         self.keyLabel = QLabel(
             self.Config.texts.keyLabel +
-            'X' * len(self.key) +
-            '.'
+            # Keep the - in Google keys
+            ''.join(self.Config.texts.hideText if c != '-' else '-' for c in self.key) +
+            '.' # Inherent point
         )
 
         self.copyKeyBtn = QPushButton(self.Config.texts.copyKey)

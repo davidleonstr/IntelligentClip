@@ -10,7 +10,8 @@
         "keyCopied": "Gemini Key Copied",
         "deleteKey": "DELETE GEMINI KEY",
         "keyDeleted": "Gemini Key Deleted",
-        "changesApplied": "Changes Applied"
+        "changesApplied": "Changes Applied",
+        "hideText": "X"
     },
     "icons": {
         "appIcon": "resources/icons/app-icon.svg"
