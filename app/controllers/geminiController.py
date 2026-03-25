@@ -6,7 +6,7 @@ class GeminiController:
     def __init__(
             self, 
             apiKey: str, 
-            modelName: str = 'gemini-1.5-flash', 
+            modelName: str = 'gemini-1.5-flash', # Default
             systemInstruction: str = ''
         ):
         genai.configure(api_key=apiKey)
@@ -17,6 +17,7 @@ class GeminiController:
         self.systemInstruction = systemInstruction # Manual systemInstruction
 
     def getAvailableModels(self):
+            # Only models that can generate text
             models = []
             for m in genai.list_models():
                 if 'generateContent' in m.supported_generation_methods:
