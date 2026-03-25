@@ -10,7 +10,7 @@ SCREENCONFIG = ObjectBuilder(
 ).obj
 
 from qtpy.QtWidgets import (
-    QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication, QGraphicsBlurEffect
+    QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication
 )
 from qtpy.QtCore import Qt
 from qtpy.QtGui import QPixmap
