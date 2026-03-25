@@ -8,7 +8,7 @@ class Relatives:
         self.prompt = open(self.RelativesFile.get('prompt-file'), encoding='utf-8').read()
         'AI Prompt.'
 
-        self.SCIPHER = self.RelativesFile.get('schiper')
+        self.SCIPHER = self.RelativesFile.get('s-chiper')
         'Seed IC Key Cipher.'
 
         self.CIPHER: SeedCipher = SeedCipher(self.SCIPHER)

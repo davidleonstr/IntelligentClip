@@ -5,23 +5,23 @@ from pathlib import Path
 import fnmatch
 
 class Folder:
-    """
+    '''
     Class to manage folders easily.
     Allows creating, deleting, copying, moving, and listing folder contents.
-    """
+    '''
     
     def __init__(self, folderpath: str):
-        """
+        '''
         Initialize the folder manager.
         
         Args:
             folderpath: Path to the folder
-        """
+        '''
         self.folderpath = folderpath
         self.path = Path(folderpath)
     
     def create(self, exist_ok: bool = True) -> None:
-        """
+        '''
         Create the folder.
         
         Args:
@@ -29,14 +29,14 @@ class Folder:
         
         Raises:
             FileExistsError: If folder exists and exist_ok is False
-        """
+        '''
         try:
             os.makedirs(self.folderpath, exist_ok=exist_ok)
         except FileExistsError:
             raise FileExistsError(f"Folder '{self.folderpath}' already exists")
     
     def delete(self, confirm: bool = False) -> bool:
-        """
+        '''
         Delete the folder and all its contents.
         
         Args:
@@ -47,7 +47,7 @@ class Folder:
         
         Raises:
             ValueError: If confirm is False (safety measure)
-        """
+        '''
         if not confirm:
             raise ValueError("Must set confirm=True to delete folder")
         
@@ -57,16 +57,16 @@ class Folder:
         return False
     
     def exists(self) -> bool:
-        """
+        '''
         Check if the folder exists.
         
         Returns:
             True if exists, False otherwise
-        """
+        '''
         return os.path.exists(self.folderpath) and os.path.isdir(self.folderpath)
     
     def is_empty(self) -> bool:
-        """
+        '''
         Check if the folder is empty.
         
         Returns:
@@ -74,13 +74,13 @@ class Folder:
         
         Raises:
             FileNotFoundError: If folder doesn't exist
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         return len(os.listdir(self.folderpath)) == 0
     
-    def list_contents(self, pattern: Optional[str] = None, recursive: bool = False) -> List[str]:
-        """
+    def listContents(self, pattern: Optional[str] = None, recursive: bool = False) -> List[str]:
+        '''
         List contents of the folder.
         
         Args:
@@ -89,7 +89,7 @@ class Folder:
         
         Returns:
             List of file/folder names
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         
@@ -108,8 +108,8 @@ class Folder:
                 contents = [item for item in contents if fnmatch.fnmatch(item, pattern)]
             return contents
     
-    def list_files(self, pattern: Optional[str] = None, recursive: bool = False) -> List[str]:
-        """
+    def listFiles(self, pattern: Optional[str] = None, recursive: bool = False) -> List[str]:
+        '''
         List only files in the folder.
         
         Args:
@@ -118,7 +118,7 @@ class Folder:
         
         Returns:
             List of absolute file paths
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         
@@ -138,8 +138,8 @@ class Folder:
         
         return files
     
-    def list_folders(self, recursive: bool = False) -> List[str]:
-        """
+    def listFolders(self, recursive: bool = False) -> List[str]:
+        '''
         List only subfolders in the folder.
         
         Args:
@@ -147,7 +147,7 @@ class Folder:
         
         Returns:
             List of folder names
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         
@@ -165,24 +165,24 @@ class Folder:
                     folders.append(item)
         return folders
     
-    def copy_to(self, destination: str) -> None:
-        """
+    def copyTo(self, destination: str) -> None:
+        '''
         Copy the folder to a new location.
         
         Args:
             destination: Destination path
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         shutil.copytree(self.folderpath, destination)
     
-    def move_to(self, destination: str) -> None:
-        """
+    def moveTo(self, destination: str) -> None:
+        '''
         Move the folder to a new location.
         
         Args:
             destination: Destination path
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         shutil.move(self.folderpath, destination)
@@ -190,12 +190,12 @@ class Folder:
         self.path = Path(destination)
     
     def rename(self, new_name: str) -> None:
-        """
+        '''
         Rename the folder.
         
         Args:
             new_name: New folder name
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         
@@ -205,13 +205,13 @@ class Folder:
         self.folderpath = new_path
         self.path = Path(new_path)
     
-    def get_size(self) -> int:
-        """
+    def getSize(self) -> int:
+        '''
         Get total size of the folder in bytes.
         
         Returns:
             Size in bytes
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         
@@ -223,22 +223,22 @@ class Folder:
                     total_size += os.path.getsize(filepath)
         return total_size
     
-    def get_size_formatted(self) -> str:
-        """
+    def getSizeFormatted(self) -> str:
+        '''
         Get total size of the folder in human-readable format.
         
         Returns:
             Size as formatted string (e.g., "1.5 MB")
-        """
-        size = self.get_size()
+        '''
+        size = self.getSize()
         for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
             if size < 1024.0:
                 return f"{size:.2f} {unit}"
             size /= 1024.0
         return f"{size:.2f} PB"
     
-    def count_items(self, recursive: bool = False) -> dict:
-        """
+    def countItems(self, recursive: bool = False) -> dict:
+        '''
         Count files and folders.
         
         Args:
@@ -246,7 +246,7 @@ class Folder:
         
         Returns:
             Dictionary with 'files' and 'folders' counts
-        """
+        '''
         if not self.exists():
             raise FileNotFoundError(f"Folder '{self.folderpath}' does not exist")
         
@@ -267,8 +267,8 @@ class Folder:
         
         return {'files': file_count, 'folders': folder_count}
     
-    def create_subfolder(self, subfolder_name: str) -> 'Folder':
-        """
+    def createSubfolder(self, subfolder_name: str) -> 'Folder':
+        '''
         Create a subfolder inside this folder.
         
         Args:
@@ -276,14 +276,14 @@ class Folder:
         
         Returns:
             Folder instance for the new subfolder
-        """
+        '''
         subfolder_path = os.path.join(self.folderpath, subfolder_name)
         subfolder = Folder(subfolder_path)
         subfolder.create()
         return subfolder
     
     def clear(self, confirm: bool = False) -> None:
-        """
+        '''
         Delete all contents of the folder but keep the folder itself.
         
         Args:
@@ -291,7 +291,7 @@ class Folder:
         
         Raises:
             ValueError: If confirm is False (safety measure)
-        """
+        '''
         if not confirm:
             raise ValueError("Must set confirm=True to clear folder")
         

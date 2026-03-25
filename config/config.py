@@ -4,25 +4,28 @@ import os
 class Config:
     def __init__(self):
         self.ConfigFile= JSONFile(r'config/config.json')
+        'Global configuration file.'
 
         self.CONFIG = self.ConfigFile.read()
+        'Global configuration dict.'
         
         self.folders = {
-            'styles': Config._loadFolderFiles(
-                Folder(self.CONFIG['app']['folders']['styles']).list_files()
+            'styles': Config.loadFolderFiles(
+                Folder(self.CONFIG['app']['folders']['styles']).listFiles()
             ),
             'configs': {
-                'windows': Config._loadFolderFiles(
-                    Folder(self.CONFIG['app']['folders']['configs']['windows']).list_files()
+                'windows': Config.loadFolderFiles(
+                    Folder(self.CONFIG['app']['folders']['configs']['windows']).listFiles()
                 ),
-                'screens': Config._loadFolderFiles(
-                    Folder(self.CONFIG['app']['folders']['configs']['screens']).list_files()
+                'screens': Config.loadFolderFiles(
+                    Folder(self.CONFIG['app']['folders']['configs']['screens']).listFiles()
                 )
             }
         }
+        'Dict that contains global styles and configurations of windows and screens.'
     
     # Resolve paths using names
-    def _loadFolderFiles(items: list) -> dict:
+    def loadFolderFiles(items: list) -> dict:
         files = {}
 
         # Insert name instead name + suffix
