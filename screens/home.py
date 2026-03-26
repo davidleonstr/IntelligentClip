@@ -45,7 +45,7 @@ class HomeScreen(QFlow.Screen):
 
         # Off autoshow to modify properties
         self.welcomeNotifiy = Notify(
-            self.Config.texts.welcomeMessage,
+            self.Config.texts.notifications.welcome,
             type='info',
             parent=self.parent(),
             toggleProgressBar=False,
@@ -69,7 +69,7 @@ class HomeScreen(QFlow.Screen):
         pixmap = pixmap.scaled(42, 42, Qt.KeepAspectRatio, Qt.SmoothTransformation)
         self.logo.setPixmap(pixmap)
 
-        self.title = QLabel(self.Config.texts.homeTitle)
+        self.title = QLabel(self.Config.texts.labels.title)
         self.title.setObjectName('title')
 
         self.nav.addWidget(self.logo)
@@ -86,13 +86,15 @@ class HomeScreen(QFlow.Screen):
         self.keyLayout = QHBoxLayout()
 
         self.keyLabel = QLabel(
-            self.Config.texts.keyLabel +
+            self.Config.texts.labels.key +
             # Keep the - in Google keys
-            ''.join(self.Config.texts.hideText if c != '-' else '-' for c in self.key) +
+            ''.join(
+                self.Config.texts.labels.symbolToHideText if c != '-' else '-' for c in self.key
+            ) +
             '.' # Inherent point
         )
 
-        self.copyKeyBtn = QPushButton(self.Config.texts.copyKey)
+        self.copyKeyBtn = QPushButton(self.Config.texts.buttons.copyKey)
         # Set default object name for button style
         self.copyKeyBtn.setObjectName('normalButton')
         self.copyKeyBtn.clicked.connect(self.copyKey)
@@ -104,7 +106,7 @@ class HomeScreen(QFlow.Screen):
 
         self.toggleServiceLayout = QHBoxLayout()
 
-        self.toggleServicelbl = QLabel(self.Config.texts.enableListener)
+        self.toggleServicelbl = QLabel(self.Config.texts.labels.enableService)
 
         self.toggleServiceSwitch = ToggleSwitch(self, checked=False)
 
@@ -115,7 +117,7 @@ class HomeScreen(QFlow.Screen):
 
         self.selectModelLayout = QHBoxLayout()
 
-        self.selectModelLbl = QLabel(self.Config.texts.selectModel)
+        self.selectModelLbl = QLabel(self.Config.texts.labels.selectModel)
 
         self.modelsCombo = QComboBox()
 
@@ -130,7 +132,7 @@ class HomeScreen(QFlow.Screen):
 
         self.content.setSpacing(15)
 
-        self.deleteKeyButton = QPushButton(self.Config.texts.deleteKey)
+        self.deleteKeyButton = QPushButton(self.Config.texts.buttons.deleteKey)
         self.deleteKeyButton.setObjectName('resetButton')
 
         self.deleteKeyButton.clicked.connect(self.deleteKey)
@@ -139,7 +141,7 @@ class HomeScreen(QFlow.Screen):
 
         self.bottom.addStretch(1) 
         
-        self.helpButton = QPushButton(self.Config.texts.help)
+        self.helpButton = QPushButton(self.Config.texts.buttons.help)
 
         # Set default object name for button style
         self.helpButton.setObjectName('normalButton')
@@ -197,7 +199,7 @@ class HomeScreen(QFlow.Screen):
         clipboard.setText(self.key)
 
         self.keyCopiedNotify = Notify(
-            self.Config.texts.keyCopied,
+            self.Config.texts.notifications.keyCopied,
             type='success',
             parent=self.parent(),
             toggleProgressBar=False,
@@ -216,7 +218,7 @@ class HomeScreen(QFlow.Screen):
         }) # Move to setup and set flag to clear the form
 
         self.deleteKeyNotify = Notify(
-            self.Config.texts.keyDeleted,
+            self.Config.texts.notifications.keyDeleted,
             type='success',
             parent=self.parent(),
             toggleProgressBar=False,

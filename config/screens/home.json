@@ -1,17 +1,22 @@
 {
     "texts": {
-        "welcomeMessage": "Welcome to Home",
-        "homeTitle": "IC HOME",
-        "keyLabel": "Gemini Key: ",
-        "copyKey": "Copy Gemini Key",
-        "enableListener": "Enable Service:",
-        "selectModel": "Select Your Model:",
-        "help": "?",
-        "keyCopied": "Gemini Key Copied",
-        "deleteKey": "DELETE GEMINI KEY",
-        "keyDeleted": "Gemini Key Deleted",
-        "changesApplied": "Changes Applied",
-        "hideText": "X"
+        "notifications": {
+            "welcome": "Welcome to Home",
+            "keyDeleted": "Gemini Key Deleted",
+            "keyCopied": "Gemini Key Copied"
+        },
+        "buttons": {
+            "deleteKey": "DELETE GEMINI KEY",
+            "copyKey": "Copy Gemini Key",
+            "help": "?"
+        },
+        "labels": {
+            "title": "IC HOME",
+            "key": "Gemini Key: ",
+            "selectModel": "Select Your Model:",
+            "enableService": "Enable Service:",
+            "symbolToHideText": "X"
+        }
     },
     "icons": {
         "appIcon": "resources/icons/app-icon.svg"

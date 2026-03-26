@@ -48,7 +48,7 @@ class HelpScreen(QFlow.Screen):
         self.bottom = QHBoxLayout()
         
         # Create back button
-        self.backButton = QPushButton(self.Config.texts.goBack)
+        self.backButton = QPushButton(self.Config.texts.buttons.goBack)
         # Set default object name for button style
         self.backButton.setObjectName('normalButton')
         # Add action

@@ -1,9 +1,15 @@
 {
     "texts": {
-        "open": "Open",
-        "close": "Close",
-        "minimized": "Minimized",
-        "whenItIsMinimized": "The application continues running in the system tray"
+        "menu": {
+            "actions": {
+                "open": "Open",
+                "close": "Close"
+            },
+            "messages": {
+                "title": "Minimized",
+                "information": "The application continues running in the system tray"
+            }
+        }
     },
     "icons": {
         "appIcon": "resources/icons/app-icon.svg"
