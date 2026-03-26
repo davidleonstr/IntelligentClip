@@ -1,3 +1,3 @@
-from .aiController import AIController
+from .serviceController import ServiceController
 
-__all__ = ['AIController']
+__all__ = ['ServiceController']
