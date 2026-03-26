@@ -15,7 +15,7 @@ from qtpy.QtWidgets import (
 from qtpy.QtCore import Qt
 from qtpy.QtGui import QPixmap
 
-from app.controllers import AIController
+from app.controllers import ServiceController
 from app import Combinations, RELATIVES
 
 import keyboard
@@ -231,7 +231,7 @@ class HomeScreen(QFlow.Screen):
     
     def loadModels(self) -> list:
         # Get models
-        models = AIController(self.key).getAvailableModels()
+        models = ServiceController(self.key).getAvailableModels()
 
         # Check if models availables
         if not models:

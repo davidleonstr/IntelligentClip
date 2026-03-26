@@ -1,5 +1,5 @@
 from .relatives import RELATIVES
-from .controllers import AIController
+from .controllers import ServiceController
 import pyperclip
 
 class Combinations:
@@ -9,7 +9,7 @@ class Combinations:
         prompt = RELATIVES.prompt
         
         # Gemini Controller
-        controller = AIController(
+        controller = ServiceController(
             apiKey=key, 
             modelName=modelName, 
             systemInstruction=prompt

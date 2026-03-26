@@ -5,7 +5,7 @@ import asyncio
 # Needed import directly from package
 from app import RELATIVES
 
-class AIController:
+class ServiceController:
     def __init__(
         self, 
         apiKey: str, 
