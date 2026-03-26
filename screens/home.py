@@ -233,6 +233,20 @@ class HomeScreen(QFlow.Screen):
         # Get models
         models = AIController(self.key).getAvailableModels()
 
+        # Check if models availables
+        if not models:
+            self.noModelsNotify = Notify(
+                self.Config.texts.notifications.noModels,
+                type='error',
+                parent=self.parent(),
+                toggleProgressBar=False,
+                autoShow=False
+            )
+
+            # Set new contexts margins and show notify
+            self.noModelsNotify.containerLayout.setContentsMargins(20, 15, 20, 15)
+            self.noModelsNotify.show()  
+
         # Add models to options
         self.modelsCombo.addItems(models)
 

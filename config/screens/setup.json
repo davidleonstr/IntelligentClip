@@ -1,7 +1,7 @@
 {
     "texts": {
         "labels": {
-            "title": "WELCOME, USER!\nSET YOUR INTELLIGENT CLIP KEY",
+            "title": "WELCOME, USER!\nSET YOUR AI API KEY",
             "appName": "INTELLIGENT CLIP"
         },
         "buttons": {
@@ -14,7 +14,7 @@
             "invalidKey": "Failed Verification",
             "validKey": "Successful Verification",
             "redirecting": "Redirecting to Home",
-            "keySetted": "IC Key Setted"
+            "keySetted": "AI Key Setted"
         }  
     },
     "icons": {

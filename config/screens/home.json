@@ -2,17 +2,18 @@
     "texts": {
         "notifications": {
             "welcome": "Welcome to Home",
-            "keyDeleted": "IC Key Deleted",
-            "keyCopied": "IC Key Copied"
+            "keyDeleted": "AI Key Deleted",
+            "keyCopied": "AI Key Copied",
+            "noModels": "No Models Available"
         },
         "buttons": {
-            "deleteKey": "DELETE IC KEY",
-            "copyKey": "Copy IC Key",
+            "deleteKey": "DELETE AI KEY",
+            "copyKey": "Copy AI Key",
             "help": "?"
         },
         "labels": {
-            "title": "IC HOME",
-            "key": "IC Key: ",
+            "title": "AI HOME",
+            "key": "AI Key: ",
             "selectModel": "Select Your Model:",
             "enableService": "Enable Service:",
             "symbolToHideText": "X"
