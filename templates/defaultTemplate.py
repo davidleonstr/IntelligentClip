@@ -61,8 +61,8 @@ class DefaultTemplate(Template):
         trayMenu = QMenu()
 
         # Add actions
-        showAction = QAction(self.Config.texts.open, self)
-        quitAction = QAction(self.Config.texts.close, self)
+        showAction = QAction(self.Config.texts.menu.actions.open, self)
+        quitAction = QAction(self.Config.texts.menu.actions.close, self)
 
         # Set actions
         showAction.triggered.connect(self.showWindow)
@@ -87,8 +87,8 @@ class DefaultTemplate(Template):
         QTimer.singleShot(0, self.parent().hide)
 
         self.trayIcon.showMessage(
-            self.Config.texts.minimized,
-            self.Config.texts.whenItIsMinimized,
+            self.Config.texts.menu.messages.title,
+            self.Config.texts.menu.messages.information,
             QSystemTrayIcon.MessageIcon.Information,
             1000
         )

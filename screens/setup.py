@@ -32,7 +32,7 @@ class KeyForm(QWidget):
         formLayout.setLabelAlignment(Qt.AlignLeft)
 
         self.title = QLabel(
-            self.Config.texts.title
+            self.Config.texts.labels.title
         )
         self.title.setObjectName('subtitle')
         self.title.setAlignment(Qt.AlignCenter)
@@ -46,11 +46,11 @@ class KeyForm(QWidget):
         self.logo.setAlignment(Qt.AlignCenter)
 
         self.inputKey = QLineEdit()
-        self.inputKey.setPlaceholderText(self.Config.texts.inputKeyPlaceholder)
+        self.inputKey.setPlaceholderText(self.Config.texts.inputs.inputKey)
         self.inputKey.setFixedWidth(250)
         self.inputKey.setEchoMode(QLineEdit.Password)
 
-        self.btnConfirm = QPushButton(self.Config.texts.confirm)
+        self.btnConfirm = QPushButton(self.Config.texts.buttons.confirmKey)
         self.btnConfirm.setObjectName('resetButton')
 
         # Execute checking
@@ -69,7 +69,7 @@ class KeyForm(QWidget):
 
         container.addWidget(self.logo)
 
-        self.appName = QLabel(self.Config.texts.appName)
+        self.appName = QLabel(self.Config.texts.labels.appName)
         self.appName.setObjectName('title')
         self.appName.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -159,7 +159,7 @@ class SetupScreen(QFlow.Screen):
         if not re.match(pattern, key):
             # Show error
             self.invalidKeyNotify = Notify(
-                self.Config.texts.invalidKey, 
+                self.Config.texts.notifications.invalidKey, 
                 type='error', 
                 parent=self.parent(),
                 toggleProgressBar=False,
@@ -178,7 +178,7 @@ class SetupScreen(QFlow.Screen):
         
         # Key Setted
         self.keySettedNotify = Notify(
-            self.Config.texts.keySetted, 
+            self.Config.texts.notifications.keySetted, 
             type='success', 
             parent=self.parent(),
             toggleProgressBar=False,
@@ -191,7 +191,7 @@ class SetupScreen(QFlow.Screen):
 
         # Show redirecting
         self.redirectingNotify = Notify(
-            self.Config.texts.redirecting, 
+            self.Config.texts.notifications.redirecting, 
             type='info', 
             parent=self.parent(),
             toggleProgressBar=False,

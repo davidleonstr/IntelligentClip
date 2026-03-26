@@ -1,14 +1,21 @@
 {
     "texts": {
-        "title": "WELCOME, USER!\nSET YOUR INTELLIGENT CLIP KEY",
-        "inputKeyPlaceholder": "Ej: AIzaSyB-8jL2kXnZ_m4P9qWv1tR5uS7y3x0A_Bc",
-        "confirm": "CONFIRM",
-        "hello": "Welcome to Intelligent Clip",
-        "invalidKey": "Failed Verification",
-        "validKey": "Successful Verification",
-        "redirecting": "Redirecting to Home",
-        "keySetted": "Gemini Key Setted",
-        "appName": "INTELLIGENT CLIP"
+        "labels": {
+            "title": "WELCOME, USER!\nSET YOUR INTELLIGENT CLIP KEY",
+            "appName": "INTELLIGENT CLIP"
+        },
+        "buttons": {
+            "confirmKey": "CONFIRM"
+        },
+        "inputs": {
+            "inputKey": "Ej: AIzaSyB-8jL2kXnZ_m4P9qWv1tR5uS7y3x0A_Bc"
+        },
+        "notifications": {
+            "invalidKey": "Failed Verification",
+            "validKey": "Successful Verification",
+            "redirecting": "Redirecting to Home",
+            "keySetted": "Gemini Key Setted"
+        }  
     },
     "icons": {
         "appIcon": "resources/icons/app-icon.svg",
