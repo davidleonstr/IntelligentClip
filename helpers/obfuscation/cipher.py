@@ -1,6 +1,6 @@
 import random
 
-class SeedCipher:
+class Cipher:
     'Seed cipher helper.'
     def __init__(self, seed: str):
         self.seed = seed

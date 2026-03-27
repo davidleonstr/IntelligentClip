@@ -1,8 +1,9 @@
-from helpers import JSONFile, SeedCipher
+from helpers.files import JSON
+from helpers.obfuscation import Cipher
 
 class Relatives:
     def __init__(self):
-        self.RelativesFile= JSONFile(r'app/relatives.json')
+        self.RelativesFile= JSON(r'app/relatives.json')
         'Application inherent configuration.'
 
         self.prompt = open(self.RelativesFile.get('files')['prompt-file'], encoding='utf-8').read()
@@ -11,7 +12,7 @@ class Relatives:
         self.SCIPHER = self.RelativesFile.get('auth')['s-chiper']
         'Seed IC Key Cipher.'
 
-        self.CIPHER: SeedCipher = SeedCipher(self.SCIPHER)
+        self.CIPHER: Cipher = Cipher(self.SCIPHER)
         'IC Key Cipher.'
 
 RELATIVES = Relatives()

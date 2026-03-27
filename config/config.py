@@ -1,9 +1,10 @@
-from helpers import JSONFile, Folder
+from helpers.files import JSON
+from helpers.builders import Folder
 import os
 
 class Config:
     def __init__(self):
-        self.ConfigFile= JSONFile(r'config/config.json')
+        self.ConfigFile= JSON(r'config/config.json')
         'Global configuration file.'
 
         self.CONFIG = self.ConfigFile.read()

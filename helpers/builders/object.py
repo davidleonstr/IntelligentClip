@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-class ObjectBuilder:
+class Object:
     '''Class to create an object using a dictionary.'''
     def __init__(self, data: dict):
         self.obj = self._to_namespace(data)

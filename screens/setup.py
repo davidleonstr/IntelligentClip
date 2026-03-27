@@ -4,10 +4,11 @@ from QFlow.components import Notify
 import re
 
 from config import CONFIG
-from helpers import JSONFile, ObjectBuilder
+from helpers.builders import Object
+from helpers.files import JSON
 
-SCREENCONFIG = ObjectBuilder(
-    JSONFile(CONFIG.folders['configs']['screens']['setup']).read()
+SCREENCONFIG = Object(
+    JSON(CONFIG.folders['configs']['screens']['setup']).read()
 ).obj
 
 from qtpy.QtWidgets import (

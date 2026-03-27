@@ -8,10 +8,11 @@ from qtpy.QtCore import Qt, QTimer
 from qtpy.QtGui import QIcon, QAction
 
 from config import CONFIG
-from helpers import JSONFile, ObjectBuilder
+from helpers.builders import Object
+from helpers.files import JSON
 
-SCREENCONFIG = ObjectBuilder(
-    JSONFile(CONFIG.folders['configs']['screens']['template']).read()
+SCREENCONFIG = Object(
+    JSON(CONFIG.folders['configs']['screens']['template']).read()
 ).obj
 
 # Default window template

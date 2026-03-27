@@ -2,7 +2,7 @@ import json
 import os
 from typing import Any, Dict, List
 
-class JSONFile:
+class JSON:
     '''
     Class to manage JSON files easily.
     Allows reading, writing, editing, and manipulating JSON files.

@@ -2,10 +2,11 @@ import QFlow
 from QFlow.modules import session, config
 
 from config import CONFIG
-from helpers import JSONFile, ObjectBuilder
+from helpers.builders import Object
+from helpers.files import JSON
 
-SCREENCONFIG = ObjectBuilder(
-    JSONFile(CONFIG.folders['configs']['screens']['help']).read()
+SCREENCONFIG = Object(
+    JSON(CONFIG.folders['configs']['screens']['help']).read()
 ).obj
 
 from qtpy.QtWidgets import (
