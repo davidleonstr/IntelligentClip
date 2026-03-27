@@ -80,7 +80,8 @@ class App(QFlow.App):
                     base64.b64decode(
                         self.key
                     )
-                )
+                ),
+                'loadModelsAndKey': True # Flag to load models and set key
             }
 
             # Initial screen

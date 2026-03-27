@@ -12,7 +12,7 @@ SCREENCONFIG = ObjectBuilder(
 from qtpy.QtWidgets import (
     QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication
 )
-from qtpy.QtCore import Qt
+from qtpy.QtCore import Qt, QTimer
 from qtpy.QtGui import QPixmap
 
 from app.controllers import ServiceController
@@ -36,13 +36,34 @@ class HomeScreen(QFlow.Screen):
         # If request is running
         self.isRunning = False
 
-    def UI(self):
-        # Parameters from another screen or windows
+    def effect(self):
+        # Get params
         self.params = QFlow.hooks.Params(self).get()
 
-        # API Key
-        self.key = self.params.get('key')
+        # Check if need
+        if self.params.get('loadModelsAndKey', False):
+            # API Key
+            self.key = self.params.get('key')
 
+            # Helper
+            def load():
+                # Clear input
+                self.modelsCombo.clear()
+
+                # Load models
+                self.loadModels()
+
+                # Delete flag
+                self.params.pop('loadModelsAndKey')
+
+            if hasattr(self, 'modelsCombo'):
+                load() # Use helper
+                return # Return function
+                
+            # Use a timer to wait for the UI to render if it didn't render from the start
+            QTimer.singleShot(0, load)
+
+    def UI(self):
         # Off autoshow to modify properties
         self.welcomeNotifiy = Notify(
             self.Config.texts.notifications.welcome,
@@ -161,9 +182,6 @@ class HomeScreen(QFlow.Screen):
         self.screenlayout.addLayout(self.bottom)
 
         self.setLayout(self.screenlayout)
-
-        # Load models
-        self.loadModels()
 
         # Set listeners
         self.setListeners()

@@ -211,7 +211,8 @@ class SetupScreen(QFlow.Screen):
             lambda: self.parent().setScreen(
                 'home', 
                 args={
-                    'key': key
+                    'key': key,
+                    'loadModelsAndKey': True # Flag to load models and set key
                 }
             )
         )
