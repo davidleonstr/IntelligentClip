@@ -53,7 +53,7 @@ class HelpScreen(QFlow.Screen):
         self.backButton.setObjectName('normalButton')
         # Add action
         self.backButton.clicked.connect(
-            lambda: self.parent().goBack()
+            self.parent().goBack
         )
 
         self.bottom.addStretch(1)
