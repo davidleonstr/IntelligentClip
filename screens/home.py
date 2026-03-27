@@ -42,7 +42,7 @@ class HomeScreen(QFlow.Screen):
 
         # Check if need
         if self.params.get('loadModelsAndKey', False):
-            # API Key
+            # API Key (It does not need to wait for a processor cycle in any case)
             self.key = self.params.get('key')
 
             # Helper
@@ -53,10 +53,14 @@ class HomeScreen(QFlow.Screen):
                 # Load models
                 self.loadModels()
 
+                # Set new API Key text
+                self.keyLabel.setText(self.getKeyLabel())
+
                 # Delete flag
                 self.params.pop('loadModelsAndKey')
 
-            if hasattr(self, 'modelsCombo'):
+            # I know these two evaluations are not necessary
+            if hasattr(self, 'modelsCombo') and hasattr(self, 'keyLabel'):
                 load() # Use helper
                 return # Return function
                 
@@ -106,14 +110,8 @@ class HomeScreen(QFlow.Screen):
 
         self.keyLayout = QHBoxLayout()
 
-        self.keyLabel = QLabel(
-            self.Config.texts.labels.key +
-            # Keep the - in Google keys
-            ''.join(
-                self.Config.texts.labels.symbolToHideText if c != '-' else '-' for c in self.key
-            ) +
-            '.' # Inherent point
-        )
+        # Set key label by function return
+        self.keyLabel = QLabel(self.getKeyLabel())
 
         self.copyKeyBtn = QPushButton(self.Config.texts.buttons.copyKey)
         # Set default object name for button style
@@ -251,6 +249,9 @@ class HomeScreen(QFlow.Screen):
         # Get models
         models = ServiceController(self.key).getAvailableModels()
 
+        # Enable switch service on success
+        self.toggleServiceSwitch.setDisabled(False)
+
         # Check if models availables
         if not models:
             self.noModelsNotify = Notify(
@@ -265,8 +266,22 @@ class HomeScreen(QFlow.Screen):
             self.noModelsNotify.containerLayout.setContentsMargins(20, 15, 20, 15)
             self.noModelsNotify.show()  
 
+            # Dissable switch service on error
+            self.toggleServiceSwitch.setDisabled(True)
+
         # Add models to options
         self.modelsCombo.addItems(models)
 
         # Select the first model
         self.modelsCombo.setCurrentIndex(0)
+
+    # Function to get key label text
+    def getKeyLabel(self) -> str:
+        return (
+            self.Config.texts.labels.key +
+            # Keep the - in Google keys
+            ''.join(
+                self.Config.texts.labels.symbolToHideText if c != '-' else '-' for c in self.key
+            ) +
+            '.' # Inherent point
+        )
