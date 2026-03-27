@@ -114,6 +114,8 @@ class SetupScreen(QFlow.Screen):
         self.screenlayout.addWidget(self.keyForm)
         self.setLayout(self.screenlayout)
 
+        self.updateKey = self.Session.getItem('updateKey')
+
     def validateKey(self, key: str) -> bool:
         pattern = RELATIVES.RelativesFile.get('auth')['ic-key-pattern']
         return bool(re.match(pattern, key))
@@ -132,8 +134,7 @@ class SetupScreen(QFlow.Screen):
         )
 
     def handleValidKey(self, key: str, button: QPushButton, input: QLineEdit):
-        updateKey = self.Session.getItem('updateKey')
-        updateKey(key)
+        self.updateKey(key)
 
         button.setDisabled(True)
 
