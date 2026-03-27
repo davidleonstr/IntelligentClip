@@ -137,6 +137,8 @@ class HomeScreen(QFlow.Screen):
 
         self.setLayout(self.screenlayout)
 
+        self.updateKey = self.Session.getItem('updateKey')
+
         self.setListeners()
 
     def setListeners(self):
@@ -170,8 +172,7 @@ class HomeScreen(QFlow.Screen):
         )
     
     def deleteKey(self):
-        updateKey = self.Session.getItem('updateKey')
-        updateKey(None)
+        self.updateKey(None)
         
         self.setup()
 
