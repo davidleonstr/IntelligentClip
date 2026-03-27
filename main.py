@@ -7,11 +7,11 @@ os.environ['QT_API'] = 'pyqt6'
 import QFlow
 from QFlow.modules import style
 from config import CONFIG
-from helpers import JSONFile
+from helpers.files import JSON
 from app import RELATIVES
 
 # Get APP Config
-APPCONFIG = JSONFile(CONFIG.folders['configs']['windows']['main']).read()
+APPCONFIG = JSON(CONFIG.folders['configs']['windows']['main']).read()
 
 import sys
 from qtpy.QtWidgets import QApplication
@@ -26,7 +26,7 @@ from templates import DefaultTemplate
 
 import base64
 
-from helpers import hasInternet
+from helpers.checkers import hasInternet
 
 # Web bridge
 from helpers import Bridge

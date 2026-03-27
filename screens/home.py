@@ -3,10 +3,11 @@ from QFlow.modules import config, session
 from QFlow.components import Notify, ToggleSwitch
 
 from config import CONFIG
-from helpers import JSONFile, ObjectBuilder
+from helpers.builders import Object
+from helpers.files import JSON
 
-SCREENCONFIG = ObjectBuilder(
-    JSONFile(CONFIG.folders['configs']['screens']['home']).read()
+SCREENCONFIG = Object(
+    JSON(CONFIG.folders['configs']['screens']['home']).read()
 ).obj
 
 from qtpy.QtWidgets import (
