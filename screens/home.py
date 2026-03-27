@@ -13,8 +13,7 @@ SCREENCONFIG = Object(
 from qtpy.QtWidgets import (
     QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication
 )
-from qtpy.QtCore import Qt, QTimer
-from qtpy.QtGui import QPixmap
+from qtpy.QtCore import QTimer
 
 from app.controllers import ServiceController
 from app import Combinations, RELATIVES
@@ -91,9 +90,8 @@ class HomeScreen(QFlow.Screen):
         self.nav.setContentsMargins(30, 10, 10, 10)
 
         self.logo = QLabel()
-        pixmap = QPixmap(self.Config.icons.appIcon)
-        pixmap = pixmap.scaled(42, 42, Qt.KeepAspectRatio, Qt.SmoothTransformation)
-        self.logo.setPixmap(pixmap)
+        logoPixmap = QFlow.helpers.Icon(self.Config.icons.appIcon, 42, 42)
+        self.logo.setPixmap(logoPixmap)
 
         self.title = QLabel(self.Config.texts.labels.title)
         self.title.setObjectName('title')

@@ -15,7 +15,6 @@ from qtpy.QtWidgets import (
     QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QFormLayout, QWidget
 )
 from qtpy.QtCore import Qt, QTimer
-from qtpy.QtGui import QPixmap
 
 from app import RELATIVES
 
@@ -40,8 +39,7 @@ class KeyForm(QWidget):
 
         self.logo = QLabel()
 
-        logoPixmap = QPixmap(self.Config.icons.appIcon)
-        logoPixmap = logoPixmap.scaled(120, 120, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        logoPixmap = QFlow.helpers.Icon(self.Config.icons.appIcon, 120, 120)
 
         self.logo.setPixmap(logoPixmap)
         self.logo.setAlignment(Qt.AlignCenter)
@@ -82,8 +80,7 @@ class KeyForm(QWidget):
 
         self.aiLogo = QLabel()
 
-        aiPixmap = QPixmap(self.Config.icons.aiIcon)
-        aiPixmap = aiPixmap.scaled(31, 31, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        aiPixmap = QFlow.helpers.Icon(self.Config.icons.aiIcon, 31, 31)
 
         self.aiLogo.setPixmap(aiPixmap)
         self.aiLogo.setAlignment(Qt.AlignCenter)
