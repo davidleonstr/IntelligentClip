@@ -38,10 +38,10 @@ class HomeScreen(QFlow.Screen):
 
     def UI(self):
         # Parameters from another screen or windows
-        params = QFlow.hooks.Params(self).get()
+        self.params = QFlow.hooks.Params(self).get()
 
         # API Key
-        self.key = params.get('key')
+        self.key = self.params.get('key')
 
         # Off autoshow to modify properties
         self.welcomeNotifiy = Notify(
