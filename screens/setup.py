@@ -115,27 +115,6 @@ class SetupScreen(QFlow.Screen):
         self.args['parent'] = parent
         super().__init__(**self.args)
 
-    def effect(self):
-        # Get params
-        self.params = QFlow.hooks.Params(self).get()
-
-        # Delete key from field
-        if self.params.get('deleteKey', False):
-            # Helper
-            def delete():
-                # Clear input
-                self.keyForm.inputKey.clear()
-
-                # Delete flag
-                self.params.pop('deleteKey')
-
-            if hasattr(self, 'keyForm'):
-                delete() # Use helper
-                return # Return function
-            
-            # Use a timer to wait for the UI to render if it didn't render from the start
-            QTimer.singleShot(0, delete)
-
     def UI(self):
         # Create screen layout
         self.screenlayout = QVBoxLayout()
@@ -206,6 +185,9 @@ class SetupScreen(QFlow.Screen):
         def onRedirecting():
             # Enable button before redirect
             button.setDisabled(False)
+
+            # Clear input
+            self.keyForm.inputKey.clear()
 
             # Redirect
             self.parent().setScreen(

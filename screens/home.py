@@ -228,11 +228,11 @@ class HomeScreen(QFlow.Screen):
     
     def deleteKey(self):
         self.parent().updateKey('') # Set IC key in blank
-            
-        self.parent().setScreen('setup', args={
-            'deleteKey': True
-        }) # Move to setup and set flag to clear the form
+        
+        # Redirect
+        self.parent().setScreen('setup')
 
+        # Code after redirect
         self.deleteKeyNotify = Notify(
             self.Config.texts.notifications.keyDeleted,
             type='success',
