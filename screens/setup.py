@@ -126,9 +126,6 @@ class SetupScreen(QFlow.Screen):
                 # Clear input
                 self.keyForm.inputKey.clear()
 
-                # Enable button
-                self.keyForm.btnConfirm.setEnabled(True)
-
                 # Delete flag
                 self.params.pop('deleteKey')
 
@@ -205,14 +202,22 @@ class SetupScreen(QFlow.Screen):
         # Update key using app method
         self.parent().updateKey(key)
 
-        # Move to the other screen after notifications end (estimated time)
-        QTimer.singleShot(
-            self.redirectingNotify.duration, 
-            lambda: self.parent().setScreen(
+        # Helper
+        def onRedirecting():
+            # Enable button before redirect
+            button.setDisabled(False)
+
+            # Redirect
+            self.parent().setScreen(
                 'home', 
                 args={
                     'key': key,
                     'loadModelsAndKey': True # Flag to load models and set key
                 }
             )
+
+        # Move to the other screen after notifications end (estimated time)
+        QTimer.singleShot(
+            self.redirectingNotify.duration, 
+            onRedirecting
         )
