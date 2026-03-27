@@ -179,22 +179,28 @@ class HomeScreen(QFlow.Screen):
             self.Config.texts.notifications.keyDeleted,
             'success'
         )
+
+    def handleLoadError(self):
+        self.showNotify(
+            self.Config.texts.notifications.noModels,
+            'error'
+        )
+
+        self.toggleServiceSwitch.setDisabled(True)
     
-    def loadScreenData(self) -> list:
-        models = ServiceController(self.key).getAvailableModels()
-
+    def handleLoadSuccess(self):
         self.toggleServiceSwitch.setDisabled(False)
-
-        if not models:
-            self.showNotify(
-                self.Config.texts.notifications.noModels,
-                'error'
-            )
-
-            self.toggleServiceSwitch.setDisabled(True)
-
         self.setKeyLabel(self.key)
-        self.setModelsList(models)
+        self.setModelsList(self.models)
+
+    def loadScreenData(self) -> list:
+        self.models = ServiceController(self.key).getAvailableModels()
+
+        if not self.models:
+            self.handleLoadError()
+            return
+        
+        self.handleLoadSuccess()
 
     def setKeyLabel(self, key: str):
         formatedKey = self.formatKey(key)
