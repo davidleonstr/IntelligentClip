@@ -1,6 +1,5 @@
 import socket
 
-# Query to google DNS
 def hasInternet(host: str='8.8.8.8', port: int=53, timeout: int=3):
     try:
         socket.setdefaulttimeout(timeout)
