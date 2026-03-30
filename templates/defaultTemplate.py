@@ -46,7 +46,7 @@ class DefaultTemplate(Template):
         self.setLayout(self.mainLayout)
 
         self.trayIcon = QSystemTrayIcon(self)
-        self.trayIcon.setIcon(QIcon(self.Config.icons.appIcon)) # Icon
+        self.trayIcon.setIcon(QIcon(self.Config.icons.appIcon))
 
         trayMenu = QMenu()
 
