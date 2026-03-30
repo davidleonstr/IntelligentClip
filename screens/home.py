@@ -188,6 +188,8 @@ class HomeScreen(QFlow.Screen):
             'error'
         )
 
+        self.setKeyLabel(self.key)
+
         self.toggleServiceSwitch.setDisabled(True)
     
     def handleLoadSuccess(self):
