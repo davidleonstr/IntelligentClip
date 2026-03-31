@@ -2,20 +2,20 @@
     "texts": {
         "notifications": {
             "welcome": "Welcome to Home",
-            "keyDeleted": "AI Key Deleted",
-            "keyCopied": "AI Key Copied",
+            "keyDeleted": "API Key Deleted",
+            "keyCopied": "API Key Copied",
             "noModels": "No Models Available"
         },
         "buttons": {
-            "deleteKey": "DELETE AI KEY",
-            "copyKey": "COPY AI KEY",
+            "deleteKey": "DELETE API KEY",
+            "copyKey": "COPY API KEY",
             "help": "?"
         },
         "labels": {
             "title": "IC HOME",
-            "key": "AI Key: ",
-            "selectModel": "Select Your Model:",
-            "enableService": "Enable Service:",
+            "key": "API Key: ",
+            "selectModel": "AI Model:",
+            "enableService": "Service Status:",
             "symbolToHideText": "X"
         }
     },
