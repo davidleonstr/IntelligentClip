@@ -1,7 +1,7 @@
 {
     "texts": {
         "labels": {
-            "title": "WELCOME, USER!\nYOU NEED TO SET YOUR AI KEY",
+            "title": "WELCOME, USER!\nYOU NEED TO SET YOUR API KEY",
             "appName": "INTELLIGENT CLIPBOARD"
         },
         "buttons": {
@@ -14,7 +14,7 @@
             "invalidKey": "Failed Verification",
             "validKey": "Successful Verification",
             "redirecting": "Redirecting to Home",
-            "keySetted": "AI Key Setted"
+            "keySetted": "API Key Setted"
         }  
     },
     "icons": {
