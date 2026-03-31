@@ -119,7 +119,9 @@ class HomeScreen(QFlow.Screen):
         self.selectModelLayout.addStretch(1)
 
         self.content.addLayout(self.keyLayout)
+        self.content.addSpacing(35)
         self.content.addLayout(self.selectModelLayout)
+        self.content.addSpacing(35)
         self.content.addLayout(self.toggleServiceLayout)
 
         self.bottom.addWidget(self.deleteKeyButton)
