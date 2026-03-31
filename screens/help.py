@@ -33,6 +33,7 @@ class HelpScreen(QFlow.Screen):
     def UI(self):
         self.screenlayout = QVBoxLayout()
         self.bottom = QHBoxLayout()
+        self.bottom.setContentsMargins(0, 0, 25, 0)
 
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')
