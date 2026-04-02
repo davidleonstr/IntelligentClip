@@ -26,6 +26,7 @@ class LoadingScreen(QFlow.Screen):
         self.params = Params(self).get()
 
         self.screenlayout = QVBoxLayout()
+        self.screenlayout.setContentsMargins(30, 20, 30, 10)
 
         self.loadingScreenChannel = QWebChannel()
         self.loadingScreenChannel.registerObject('bridge', self.params.get('bridge'))

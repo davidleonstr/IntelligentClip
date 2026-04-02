@@ -34,8 +34,7 @@ class HelpScreen(QFlow.Screen):
 
     def UI(self):
         self.screenlayout = QVBoxLayout()
-        self.bottom = QHBoxLayout()
-        self.bottom.setContentsMargins(0, 0, 25, 0)
+        self.screenlayout.setContentsMargins(30, 20, 30, 10)
 
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')
@@ -47,15 +46,7 @@ class HelpScreen(QFlow.Screen):
         )
         self.browser.page().loadFinished.connect(self.onPageLoaded)
         
-        self.backButton = QPushButton(self.Config.texts.buttons.goBack)
-        self.backButton.setObjectName('normalButton')
-        self.backButton.clicked.connect(self.parent().goBack)
-
-        self.bottom.addStretch(1)
-        self.bottom.addWidget(self.backButton)
-        
         self.screenlayout.addWidget(self.browser)
-        self.screenlayout.addLayout(self.bottom)
 
         self.setLayout(self.screenlayout)
 
