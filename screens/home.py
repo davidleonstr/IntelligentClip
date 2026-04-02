@@ -108,7 +108,7 @@ class HomeScreen(QFlow.Screen):
         self.selectModelLayout.addWidget(self.modelsCombo)
         self.selectModelLayout.addStretch(1)
 
-        self.content.addSpacing(15)
+        self.content.addSpacing(10)
         self.content.addLayout(self.selectModelLayout)
         self.content.addSpacing(15)
         self.content.addLayout(self.toggleServiceLayout)
