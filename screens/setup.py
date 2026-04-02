@@ -139,7 +139,6 @@ class SetupScreen(QFlow.Screen):
         button.setDisabled(True)
 
         self.showNotify(self.Config.texts.notifications.validKey, 'success')
-
         self.showNotify(self.Config.texts.notifications.keySetted, 'success')
 
         redirectNotify = self.showNotify(
