@@ -13,10 +13,8 @@
         },
         "labels": {
             "title": "IC HOME",
-            "key": "API Key: ",
             "selectModel": "AI Model:",
-            "enableService": "Service Status:",
-            "symbolToHideText": "X"
+            "enableService": "Service Status:"
         }
     },
     "icons": {
