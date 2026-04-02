@@ -109,6 +109,7 @@ class SetupScreen(QFlow.Screen):
 
     def UI(self):
         self.screenlayout = QVBoxLayout()
+        self.screenlayout.setContentsMargins(30, 20, 30, 10)
         self.keyForm = KeyForm(parent=self)
         self.screenlayout.addWidget(self.keyForm)
         self.setLayout(self.screenlayout)
