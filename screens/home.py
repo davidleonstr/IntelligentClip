@@ -67,7 +67,6 @@ class HomeScreen(QFlow.Screen):
         self.title.setObjectName('title')
 
         self.selectModelLbl = QLabel(self.Config.texts.labels.selectModel)
-        self.keyLabel = QLabel()
         self.toggleServicelbl = QLabel(self.Config.texts.labels.enableService)
 
         self.content = QVBoxLayout()
@@ -87,13 +86,8 @@ class HomeScreen(QFlow.Screen):
 
         self.modelsCombo = QComboBox()
 
-        self.keyLayout = QHBoxLayout()
-        self.selectModelLayout = QHBoxLayout()
-        self.toggleServiceLayout = QHBoxLayout()
-
-        self.copyKeyBtn = QPushButton(self.Config.texts.buttons.copyKey)
-        self.copyKeyBtn.setObjectName('normalButton')
-        self.copyKeyBtn.clicked.connect(self.copyKey)
+        self.selectModelLayout = QVBoxLayout()
+        self.toggleServiceLayout = QVBoxLayout()
 
         self.toggleServiceSwitch = ToggleSwitch(
             self, checked=False,
@@ -106,10 +100,6 @@ class HomeScreen(QFlow.Screen):
         self.nav.addWidget(self.title)
         self.nav.addStretch()
 
-        self.keyLayout.addWidget(self.keyLabel)
-        self.keyLayout.addWidget(self.copyKeyBtn)
-        self.keyLayout.addStretch(1)
-
         self.toggleServiceLayout.addWidget(self.toggleServicelbl)
         self.toggleServiceLayout.addWidget(self.toggleServiceSwitch)
         self.toggleServiceLayout.addStretch(1)
@@ -118,10 +108,9 @@ class HomeScreen(QFlow.Screen):
         self.selectModelLayout.addWidget(self.modelsCombo)
         self.selectModelLayout.addStretch(1)
 
-        self.content.addLayout(self.keyLayout)
-        self.content.addSpacing(35)
+        self.content.addSpacing(15)
         self.content.addLayout(self.selectModelLayout)
-        self.content.addSpacing(35)
+        self.content.addSpacing(15)
         self.content.addLayout(self.toggleServiceLayout)
 
         self.bottom.addWidget(self.deleteKeyButton)
@@ -191,13 +180,10 @@ class HomeScreen(QFlow.Screen):
             'error'
         )
 
-        self.setKeyLabel(self.key)
-
         self.toggleServiceSwitch.setDisabled(True)
     
     def handleLoadSuccess(self):
         self.toggleServiceSwitch.setDisabled(False)
-        self.setKeyLabel(self.key)
         self.setModelsList(self.models)
 
     def loadScreenData(self) -> list:
@@ -208,10 +194,6 @@ class HomeScreen(QFlow.Screen):
             return
         
         self.handleLoadSuccess()
-
-    def setKeyLabel(self, key: str):
-        formatedKey = self.formatKey(key)
-        self.keyLabel.setText(formatedKey)
     
     def setModelsList(self, models: list) -> None:
         self.modelsCombo.clear()
@@ -223,14 +205,3 @@ class HomeScreen(QFlow.Screen):
     
     def setup(self):
         self.parent().setScreen('setup')
-
-    def formatKey(self, key: str) -> str:
-        return (
-            self.Config.texts.labels.key 
-            +
-            ''.join(
-                self.Config.texts.labels.symbolToHideText if c != '-' else '-' for c in key
-            ) 
-            +
-            '.'
-        )
