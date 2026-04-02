@@ -53,11 +53,9 @@ class HomeScreen(QFlow.Screen):
 
     def UI(self):        
         self.screenlayout = QVBoxLayout()
-        self.screenlayout.setContentsMargins(0, 0, 0, 0)
-        self.screenlayout.setSpacing(0)
+        self.screenlayout.setContentsMargins(30, 20, 30, 10)
 
         self.nav = QHBoxLayout()
-        self.nav.setContentsMargins(30, 20, 30, 10)
 
         self.logo = QLabel()
         logoPixmap = QFlow.helpers.Icon(self.Config.icons.appIcon, 42, 42)
@@ -70,12 +68,11 @@ class HomeScreen(QFlow.Screen):
         self.toggleServicelbl = QLabel(self.Config.texts.labels.enableService)
 
         self.content = QVBoxLayout()
-        self.content.setContentsMargins(30, 10, 30, 10)
         self.content.setSpacing(20)
+        self.content.setContentsMargins(0, 20, 0, 20)
 
         self.bottom = QHBoxLayout()
         self.bottom.setSpacing(20)
-        self.bottom.setContentsMargins(30, 10, 30, 10)
 
         self.helpButton = QPushButton(self.Config.texts.buttons.help)
         self.helpButton.setObjectName('normalButton')
@@ -97,7 +94,7 @@ class HomeScreen(QFlow.Screen):
         )
 
         self.nav.addWidget(self.logo)
-        self.nav.addSpacing(8)
+        self.nav.addSpacing(10)
         self.nav.addWidget(self.title)
         self.nav.addStretch()
 
@@ -109,9 +106,7 @@ class HomeScreen(QFlow.Screen):
         self.selectModelLayout.addWidget(self.modelsCombo)
         self.selectModelLayout.addStretch(1)
 
-        self.content.addSpacing(10)
         self.content.addLayout(self.selectModelLayout)
-        self.content.addSpacing(15)
         self.content.addLayout(self.toggleServiceLayout)
 
         self.bottom.addWidget(self.deleteKeyButton)

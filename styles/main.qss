@@ -56,8 +56,22 @@ QLabel#subtitle {
 
 QPushButton#normalButton {
     background: #292929;
+    border: none;
+    border-radius: 4px;
     padding: 8px 12px;
     color: white;
+}
+
+QPushButton#normalButton:hover {
+    background-color: #272727;
+}
+
+QPushButton#normalButton:pressed {
+    background-color: #252525;
+}
+
+QPushButton#normalButton:disabled {
+    background-color: #7f8c8d;
 }
 
 QPushButton#resetButton {
