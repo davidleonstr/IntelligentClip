@@ -57,7 +57,6 @@ python main.py
 
 From the home screen:
 
-- The stored API key is displayed in masked form and can be copied to the clipboard.
 - A model selector lists all available AI models that support content generation.
 - The listener toggle enables or disables hotkey processing.
 - When the listener is active and the configured hotkey is pressed, IC reads the current clipboard, sends it to AI with the configured system prompt, and writes the response back to the clipboard.
