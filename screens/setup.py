@@ -16,7 +16,9 @@ from qtpy.QtWidgets import (
 from qtpy.QtCore import Qt, QTimer
 
 SCREENCONFIG = Object(
-    JSON(CONFIG.folders['configs']['screens']['setup']).read()
+    JSON(
+        CONFIG.folders['locales']['languages'][RELATIVES.LANGUAGE]['screens']['setup']
+    ).read()
 ).obj
 
 @config(SCREENCONFIG)
@@ -37,7 +39,7 @@ class KeyForm(QWidget):
         self.title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.logo = QLabel()
-        self.logoPixmap = Icon(self.Config.icons.appIcon, 120, 120)
+        self.logoPixmap = Icon(CONFIG.folders['icons']['normals']['app-icon'], 120, 120)
         self.logo.setPixmap(self.logoPixmap)
         self.logo.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -51,7 +53,7 @@ class KeyForm(QWidget):
         self.inputKey.setEchoMode(QLineEdit.EchoMode.Password)
 
         self.aiLogo = QLabel()
-        self.aiPixmap = Icon(self.Config.icons.aiIcon, 31, 31)
+        self.aiPixmap = Icon(CONFIG.folders['icons']['labels']['ai-icon'], 31, 31)
         self.aiLogo.setPixmap(self.aiPixmap)
         self.aiLogo.setAlignment(Qt.AlignmentFlag.AlignCenter)
 

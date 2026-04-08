@@ -10,8 +10,5 @@
                 "information": "The application continues running in the system tray!"
             }
         }
-    },
-    "icons": {
-        "appIcon": "resources/icons/app-icon.svg"
     }
 }

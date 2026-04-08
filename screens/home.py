@@ -5,6 +5,7 @@ import asyncio
 import QFlow
 from QFlow.modules import config, session
 from QFlow.components import ToggleSwitch
+from QFlow.helpers import Icon
 
 from config import CONFIG
 from helpers.builders import Object
@@ -19,7 +20,9 @@ from app.controllers import ServiceController
 from app import Combinations, RELATIVES
 
 SCREENCONFIG = Object(
-    JSON(CONFIG.folders['configs']['screens']['home']).read()
+    JSON(
+        CONFIG.folders['locales']['languages'][RELATIVES.LANGUAGE]['screens']['home']
+    ).read()
 ).obj
 
 @QFlow.screen(
@@ -58,7 +61,7 @@ class HomeScreen(QFlow.Screen):
         self.nav = QHBoxLayout()
 
         self.logo = QLabel()
-        logoPixmap = QFlow.helpers.Icon(self.Config.icons.appIcon, 42, 42)
+        logoPixmap = Icon(CONFIG.folders['icons']['normals']['app-icon'], 42, 42)
         self.logo.setPixmap(logoPixmap)
 
         self.title = QLabel(self.Config.texts.labels.title)
