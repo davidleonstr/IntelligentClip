@@ -25,8 +25,12 @@ from templates import DefaultTemplate
 
 APPCONFIG = JSON(CONFIG.folders['configs']['windows']['main']).read()
 
+WINDOWCONFIG = JSON(
+    CONFIG.folders['locales']['languages'][RELATIVES.LANGUAGE]['windows']['main']
+).read()
+
 @QFlow.app(
-    title=APPCONFIG.get('title'), 
+    title=WINDOWCONFIG.get('texts')['title'], 
     geometry=APPCONFIG.get('geometry'), 
     icon=lambda: QIcon(APPCONFIG.get('icon-path')),
     customTemplate=DefaultTemplate,
@@ -107,9 +111,9 @@ class App(QFlow.App):
 
     def showNotify(self, message: str, type: str):
         customTypes = {
-            'success': Icon(CONFIG.folders['icons']['success-icon'], 25, 25),
-            'info': Icon(CONFIG.folders['icons']['info-icon'], 25, 25),
-            'error': Icon(CONFIG.folders['icons']['error-icon'], 25, 25)
+            'success': Icon(CONFIG.folders['icons']['notifications']['success-icon'], 25, 25),
+            'info': Icon(CONFIG.folders['icons']['notifications']['info-icon'], 25, 25),
+            'error': Icon(CONFIG.folders['icons']['notifications']['error-icon'], 25, 25)
         }
 
         notify = Notify(

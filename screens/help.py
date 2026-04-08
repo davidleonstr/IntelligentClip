@@ -18,7 +18,9 @@ from config import CONFIG
 from app import RELATIVES
 
 SCREENCONFIG = Object(
-    JSON(CONFIG.folders['configs']['screens']['help']).read()
+    JSON(
+        CONFIG.folders['locales']['languages'][RELATIVES.LANGUAGE]['screens']['help']
+    ).read()
 ).obj
 
 @QFlow.screen(

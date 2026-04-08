@@ -1,6 +1,9 @@
 {
     "ic-key": null,
     "ic-openai-wrapper": "https://generativelanguage.googleapis.com/v1beta/openai/",
+    "gui": {
+        "language": "en"
+    },
     "files": {
         "prompt-file": "app/prompt.md"
     },

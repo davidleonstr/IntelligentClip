@@ -12,6 +12,9 @@ class Relatives:
         self.SCIPHER = self.RelativesFile.get('auth')['s-chiper']
         'Seed IC Key Cipher.'
 
+        self.LANGUAGE = self.RelativesFile.get('gui')['language']
+        'Application language.'
+
         self.CIPHER: Cipher = Cipher(self.SCIPHER)
         'IC Key Cipher.'
 

@@ -16,9 +16,5 @@
             "redirecting": "Redirecting to Home",
             "keySetted": "API Key Setted"
         }  
-    },
-    "icons": {
-        "appIcon": "resources/icons/app-icon.svg",
-        "aiIcon": "resources/icons/ai-icon.svg"
     }
 }

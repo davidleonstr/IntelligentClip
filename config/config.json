@@ -3,10 +3,23 @@
         "folders": {
             "styles": "styles",
             "configs": {
-                "windows": "config/windows",
-                "screens": "config/screens"
+                "path": "config/",
+                "windows": "/windows",
+                "screens": "/screens"
             },
-            "icons": "resources/icons/functions"
+            "locales": {
+                "path": "locales/",
+                "base": {
+                    "windows": "/windows",
+                    "screens": "/screens"
+                }
+            },
+            "icons": {
+                "path": "resources/icons/",
+                "notifications": "/notifications",
+                "normals": "/",
+                "labels": "/labels"
+            }
         }
     }
 }

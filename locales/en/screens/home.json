@@ -16,8 +16,5 @@
             "selectModel": "AI Model:",
             "enableService": "Service Status:"
         }
-    },
-    "icons": {
-        "appIcon": "resources/icons/app-icon.svg"
     }
 }

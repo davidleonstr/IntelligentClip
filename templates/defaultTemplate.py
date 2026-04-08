@@ -12,9 +12,12 @@ from helpers.builders import Object
 from helpers.files import JSON
 
 from config import CONFIG
+from app import RELATIVES
 
 SCREENCONFIG = Object(
-    JSON(CONFIG.folders['configs']['screens']['template']).read()
+    JSON(
+        CONFIG.folders['locales']['languages'][RELATIVES.LANGUAGE]['screens']['template']
+    ).read()
 ).obj
 
 @config(SCREENCONFIG)
@@ -48,7 +51,7 @@ class DefaultTemplate(Template):
         self.setLayout(self.mainLayout)
 
         self.trayIcon = QSystemTrayIcon(self)
-        self.trayIcon.setIcon(QIcon(self.Config.icons.appIcon))
+        self.trayIcon.setIcon(QIcon(CONFIG.folders['icons']['normals']['app-icon']))
 
         trayMenu = QMenu()
 
