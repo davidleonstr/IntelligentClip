@@ -1,5 +1,3 @@
-import os
-
 import QFlow
 from QFlow.modules import session
 from QFlow.hooks import Params
@@ -8,9 +6,10 @@ from qtpy.QtWidgets import (
     QVBoxLayout
 )
 from qtpy.QtGui import QColor
-from qtpy.QtCore import QUrl
 from qtpy.QtWebEngineWidgets import QWebEngineView
 from qtpy.QtWebChannel import QWebChannel
+
+from pym import execute
 
 @QFlow.screen(
     name='loding',
@@ -31,15 +30,13 @@ class LoadingScreen(QFlow.Screen):
         self.loadingScreenChannel = QWebChannel()
         self.loadingScreenChannel.registerObject('bridge', self.params.get('bridge'))
 
+        html = execute('screens/html/loading-screen.html')
+
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')
         self.browser.page().setBackgroundColor(QColor('#1e1e1e'))
         self.browser.page().setWebChannel(self.loadingScreenChannel)
-        self.browser.setUrl(
-            QUrl.fromLocalFile(
-                os.path.abspath('screens/html/loading-screen.html')
-            )
-        )
+        self.browser.setHtml(html)
 
         self.screenLayout.addWidget(self.browser)
 
