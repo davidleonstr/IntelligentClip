@@ -181,6 +181,7 @@ class HomeScreen(QFlow.Screen):
         )
 
         self.toggleServiceSwitch.setDisabled(True)
+        self.setModelsList([])
     
     def handleLoadSuccess(self):
         self.toggleServiceSwitch.setDisabled(False)
