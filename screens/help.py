@@ -1,5 +1,3 @@
-import os
-
 import QFlow
 from QFlow.modules import session, config
 
@@ -10,8 +8,9 @@ from qtpy.QtWidgets import (
     QVBoxLayout, QPushButton, QHBoxLayout
 )
 from qtpy.QtGui import QColor
-from qtpy.QtCore import QUrl
 from qtpy.QtWebEngineWidgets import QWebEngineView
+
+from pym import execute
 
 from config import CONFIG
 
@@ -41,14 +40,12 @@ class HelpScreen(QFlow.Screen):
         
         self.bottom = QHBoxLayout()
 
+        html = execute('screens/html/help-screen.html')
+
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')
         self.browser.page().setBackgroundColor(QColor('#1e1e1e'))
-        self.browser.setUrl(
-            QUrl.fromLocalFile(
-                os.path.abspath('screens/html/help-screen.html')
-            )
-        )
+        self.browser.setHtml(html)
         self.browser.page().loadFinished.connect(self.onPageLoaded)
 
         self.backButton = QPushButton(self.Config.texts.buttons.goBack)
