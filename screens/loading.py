@@ -9,7 +9,7 @@ from qtpy.QtGui import QColor
 from qtpy.QtWebEngineWidgets import QWebEngineView
 from qtpy.QtWebChannel import QWebChannel
 
-from pym import execute
+from pym import Render
 
 @QFlow.screen(
     name='loding',
@@ -30,7 +30,12 @@ class LoadingScreen(QFlow.Screen):
         self.loadingScreenChannel = QWebChannel()
         self.loadingScreenChannel.registerObject('bridge', self.params.get('bridge'))
 
-        html = execute('screens/html/loading-screen.html')
+        html = Render().get(
+            open(
+                'screens/html/loading-screen.html',
+                encoding='utf-8'
+            ).read()
+        )
 
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')
