@@ -7,7 +7,7 @@ from qtpy.QtWidgets import (
 from qtpy.QtGui import QColor
 from qtpy.QtWebEngineWidgets import QWebEngineView
 
-from pym import execute
+from pym import Render
 
 @QFlow.screen(
     name='error',
@@ -23,7 +23,12 @@ class ErrorScreen(QFlow.Screen):
         self.screenLayout = QVBoxLayout()
         self.screenLayout.setContentsMargins(30, 20, 30, 10)
 
-        html = execute('screens/html/error-screen.html')
+        html = Render().get(
+            open(
+                'screens/html/error-screen.html',
+                encoding='utf-8'
+            ).read()
+        )
 
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')

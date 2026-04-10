@@ -10,7 +10,7 @@ from qtpy.QtWidgets import (
 from qtpy.QtGui import QColor
 from qtpy.QtWebEngineWidgets import QWebEngineView
 
-from pym import execute
+from pym import Render
 
 from config import CONFIG
 
@@ -40,7 +40,12 @@ class HelpScreen(QFlow.Screen):
         
         self.bottom = QHBoxLayout()
 
-        html = execute('screens/html/help-screen.html')
+        html = Render().get(
+            open(
+                'screens/html/help-screen.html',
+                encoding='utf-8'
+            ).read()
+        )
 
         self.browser = QWebEngineView()
         self.browser.setStyleSheet('background-color: #1e1e1e;')
