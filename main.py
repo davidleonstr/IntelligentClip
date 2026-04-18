@@ -36,15 +36,9 @@ APPCONFIG = Object(
 ).obj
 
 WINDOWCONFIG = Object(
-    JSON(
-        CONFIG.tree(
-            'locales', 
-            'languages', 
-            RELATIVES.LANGUAGE,
-            'windows',
-            'main'
-        )
-    ).read()
+    CONFIG.language(
+        name='main', language=RELATIVES.LANGUAGE, objType='windows'
+    )
 ).obj
 
 @QFlow.app(
