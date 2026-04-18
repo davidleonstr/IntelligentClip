@@ -61,5 +61,25 @@ class Config:
 
             self.folders[name]['files'][key] = items
 
+    def language(self, name: str, language: dict, objType: str = 'screens', defaultMerge: str = 'en') -> dict:
+        def mergeMissing(target: dict, source: dict) -> dict:
+            for key, value in source.items():
+                if key not in target:
+                    target[key] = value
+                else:
+                    if isinstance(target[key], dict) and isinstance(value, dict):
+                        mergeMissing(target[key], value)
+
+            return target
+
+        return mergeMissing(
+            JSON(
+                self.tree('locales', 'languages', language, objType, name)
+            ).read(),
+            JSON(
+                self.tree('locales', 'languages', defaultMerge, objType, name)
+            ).read()
+        )
+
 CONFIG = Config()
 'Application Inherent Configuration.'

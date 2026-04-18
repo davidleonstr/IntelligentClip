@@ -8,7 +8,6 @@ from app import RELATIVES
 from config import CONFIG
 
 from helpers.builders import Object
-from helpers.files import JSON
 
 from qtpy.QtWidgets import (
     QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QWidget
@@ -16,15 +15,9 @@ from qtpy.QtWidgets import (
 from qtpy.QtCore import Qt, QTimer
 
 SCREENCONFIG = Object(
-    JSON(
-        CONFIG.tree(
-            'locales',
-            'languages',
-            RELATIVES.LANGUAGE,
-            'screens',
-            'setup'
-        )
-    ).read()
+    CONFIG.language(
+        name='setup', language=RELATIVES.LANGUAGE, objType='screens'
+    )
 ).obj
 
 @config(SCREENCONFIG)

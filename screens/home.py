@@ -20,15 +20,9 @@ from app.controllers import ServiceController
 from app import Combinations, RELATIVES
 
 SCREENCONFIG = Object(
-    JSON(
-        CONFIG.tree(
-            'locales',
-            'languages',
-            RELATIVES.LANGUAGE,
-            'screens',
-            'home'
-        )
-    ).read()
+    CONFIG.language(
+        name='home', language=RELATIVES.LANGUAGE, objType='screens'
+    )
 ).obj
 
 @QFlow.screen(

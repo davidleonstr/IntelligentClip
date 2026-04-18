@@ -9,21 +9,14 @@ from qtpy.QtCore import Qt, QTimer
 from qtpy.QtGui import QIcon, QAction
 
 from helpers.builders import Object
-from helpers.files import JSON
 
 from config import CONFIG
 from app import RELATIVES
 
 SCREENCONFIG = Object(
-    JSON(
-        CONFIG.tree(
-            'locales',
-            'languages',
-            RELATIVES.LANGUAGE,
-            'screens',
-            'template'
-        )
-    ).read()
+    CONFIG.language(
+        name='template', language=RELATIVES.LANGUAGE, objType='screens'
+    )
 ).obj
 
 @config(SCREENCONFIG)
