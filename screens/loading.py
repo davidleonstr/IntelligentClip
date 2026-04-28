@@ -9,10 +9,22 @@ from qtpy.QtGui import QColor
 from qtpy.QtWebEngineWidgets import QWebEngineView
 from qtpy.QtWebChannel import QWebChannel
 
+from helpers.builders import Object
+
 from pym import Render
 
+from config import CONFIG
+
+from app import RELATIVES
+
+SCREENCONFIG = Object(
+    CONFIG.language(
+        name='loading', language=RELATIVES.LANGUAGE, objType='screens'
+    )
+).obj
+
 @QFlow.screen(
-    name='loding',
+    name='loading',
     parentType=QFlow.App
 )
 @session()
@@ -30,7 +42,11 @@ class LoadingScreen(QFlow.Screen):
         self.loadingScreenChannel = QWebChannel()
         self.loadingScreenChannel.registerObject('bridge', self.params.get('bridge'))
 
-        html = Render().get(
+        html = Render(
+            context={
+                'SCREENCONFIG': SCREENCONFIG
+            }
+        ).get(
             open(
                 'screens/html/loading-screen.html',
                 encoding='utf-8'

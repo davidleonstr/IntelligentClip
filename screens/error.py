@@ -7,7 +7,19 @@ from qtpy.QtWidgets import (
 from qtpy.QtGui import QColor
 from qtpy.QtWebEngineWidgets import QWebEngineView
 
+from helpers.builders import Object
+
 from pym import Render
+
+from config import CONFIG
+
+from app import RELATIVES
+
+SCREENCONFIG = Object(
+    CONFIG.language(
+        name='error', language=RELATIVES.LANGUAGE, objType='screens'
+    )
+).obj
 
 @QFlow.screen(
     name='error',
@@ -23,7 +35,11 @@ class ErrorScreen(QFlow.Screen):
         self.screenLayout = QVBoxLayout()
         self.screenLayout.setContentsMargins(30, 20, 30, 10)
 
-        html = Render().get(
+        html = Render(
+            context={
+                'SCREENCONFIG': SCREENCONFIG
+            }
+        ).get(
             open(
                 'screens/html/error-screen.html',
                 encoding='utf-8'

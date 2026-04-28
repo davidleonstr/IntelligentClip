@@ -2,7 +2,6 @@ import QFlow
 from QFlow.modules import session, config
 
 from helpers.builders import Object
-from helpers.files import JSON
 
 from qtpy.QtWidgets import (
     QVBoxLayout, QPushButton, QHBoxLayout
@@ -40,7 +39,11 @@ class HelpScreen(QFlow.Screen):
         
         self.bottom = QHBoxLayout()
 
-        html = Render().get(
+        html = Render(
+            context={
+                'SCREENCONFIG': SCREENCONFIG
+            }
+        ).get(
             open(
                 'screens/html/help-screen.html',
                 encoding='utf-8'
