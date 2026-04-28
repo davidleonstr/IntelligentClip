@@ -39,10 +39,6 @@
             "note": "If the hotkey does not respond, make sure the listener toggle is enabled on the home screen and that IC is running in the foreground or background. Triggering the hotkey while a previous request is still processing will have no effect."
         },
         "home": {
-            "apiKey": {
-                "title": "API Key",
-                "description": "Displays your stored key in masked form. Use the Copy button to copy the raw key to the clipboard at any time."
-            },
             "modelSelector": {
                 "title": "Model selector",
                 "description": "Lists all AI models available under your API key that support content generation. The selected model is used for every request until you change it."
