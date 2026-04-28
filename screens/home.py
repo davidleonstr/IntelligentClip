@@ -9,7 +9,6 @@ from QFlow.helpers import Icon
 
 from config import CONFIG
 from helpers.builders import Object
-from helpers.files import JSON
 
 from qtpy.QtWidgets import (
     QVBoxLayout, QLabel, QPushButton, QHBoxLayout, QComboBox, QApplication

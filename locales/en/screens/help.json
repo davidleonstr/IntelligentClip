@@ -2,6 +2,63 @@
     "texts": {
         "buttons": {
             "goBack": "GO BACK"
+        },
+        "header": {
+            "title": "User Guide"
+        },
+        "sections": {
+            "gettingStarted": "Getting started",
+            "hotkey": "Hotkey",
+            "homeReference": "Home screen reference",
+            "howItWorks": "How it works"
+        },
+        "steps": {
+            "stepOne": {
+                "title": "Enter your API key",
+                "description": "On first launch, the setup screen will appear. Paste your AI API key into the input field and press Confirm. The key will be validated and stored locally in encrypted form."
+            },
+            "stepTwo": {
+                "title": "Select a model",
+                "description": "Once on the home screen, IC will load all AI models available for your key. Use the dropdown to select the model you want to use for processing."
+            },
+            "stepThree": {
+                "title": "Enable the listener",
+                "description": "Toggle the listener switch to activate hotkey detection. The application will now monitor your keyboard in the background while it is running."
+            },
+            "stepFour": {
+                "title": "Copy text and trigger IC",
+                "description": "Select any text in any application and copy it to your clipboard. Then press the hotkey. IC will process the content through AI and write the result back to your clipboard."
+            },
+            "stepFive": {
+                "title": "Paste the result",
+                "description": "Once processing is complete, simply paste as you normally would. The clipboard now contains the AI-processed version of your original text."
+            }
+        },
+        "hotkey": {
+            "description": "Press this combination at any time while the listener is enabled to trigger clipboard processing.",
+            "note": "If the hotkey does not respond, make sure the listener toggle is enabled on the home screen and that IC is running in the foreground or background. Triggering the hotkey while a previous request is still processing will have no effect."
+        },
+        "home": {
+            "apiKey": {
+                "title": "API Key",
+                "description": "Displays your stored key in masked form. Use the Copy button to copy the raw key to the clipboard at any time."
+            },
+            "modelSelector": {
+                "title": "Model selector",
+                "description": "Lists all AI models available under your API key that support content generation. The selected model is used for every request until you change it."
+            },
+            "listenerToggle": {
+                "title": "Listener toggle",
+                "description": "Enables or disables hotkey detection. When off, pressing the hotkey will have no effect even if IC is running."
+            },
+            "deleteKey": {
+                "title": "Delete key",
+                "description": "Removes the stored API key and returns the application to the setup screen. You will need to enter a valid key again before using IC."
+            }
+        },
+        "howItWorks": {
+            "description": "When the hotkey is pressed, IC reads the current contents of your clipboard and sends them to the selected AI model along with a preconfigured system prompt. The model's response is written back to the clipboard, replacing the original content. The entire operation runs in the background without interrupting your active window.",
+            "note": "Processing time depends on the selected model and the length of the clipboard content. Avoid triggering the hotkey multiple times in quick succession — concurrent requests are blocked automatically, but repeated attempts will not speed up the result."
         }
     }
 }
