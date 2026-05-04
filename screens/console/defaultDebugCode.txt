@@ -1,0 +1,46 @@
+# Tab constant
+TAB = '    '
+
+# Actual ubication
+print('Actual ubication:', self, '\n')
+
+# App object
+app = self.parent()
+
+# App object information
+print('App object information:', app, '\n')
+
+# App properties
+print('App properties:')
+for value in self.utilities.listObjProperties(app):
+    if not value.startswith('_'):
+        print(TAB, value)
+
+sys.stdout.write('\n')
+
+# Screens
+print('Screens:')
+for name, screen in app.screens.items():
+    print(TAB, name, '=> ID:', id(screen))
+
+sys.stdout.write('\n')
+
+# Globals
+print('Globals:')
+for value in globals():
+    print(TAB, value)
+
+sys.stdout.write('\n')
+
+# Locals
+print('Locals:')
+for value in locals():
+    print(TAB, value)
+
+sys.stdout.write('\n')
+
+# Utilities methods
+print('Utilities:')
+for value in self.utilities.listObjMethods(self.utilities):
+    if not value.startswith('_'):
+        print(TAB, value)

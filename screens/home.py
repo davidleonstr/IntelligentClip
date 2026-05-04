@@ -80,6 +80,10 @@ class HomeScreen(QFlow.Screen):
         self.helpButton.setObjectName('normalButton')
         self.helpButton.clicked.connect(self.help)
 
+        self.consoleButton = QPushButton(self.Config.texts.buttons.console)
+        self.consoleButton.setObjectName('normalButton')
+        self.consoleButton.clicked.connect(self.console)
+
         self.deleteKeyButton = QPushButton(self.Config.texts.buttons.deleteKey)
         self.deleteKeyButton.setObjectName('resetButton')
         self.deleteKeyButton.clicked.connect(self.deleteKey)
@@ -114,6 +118,8 @@ class HomeScreen(QFlow.Screen):
 
         self.bottom.addWidget(self.deleteKeyButton)
         self.bottom.addWidget(self.helpButton)
+        self.bottom.addWidget(self.consoleButton)
+
         self.bottom.addStretch(1) 
 
         self.screenLayout.addLayout(self.nav)
@@ -204,3 +210,6 @@ class HomeScreen(QFlow.Screen):
     
     def setup(self):
         self.parent().setScreen('setup')
+    
+    def console(self):
+        self.parent().setScreen('console')

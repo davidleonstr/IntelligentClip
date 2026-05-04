@@ -1,0 +1,13 @@
+{
+    "texts": {
+        "labels": {
+            "title": "IC Debug Console",
+            "inputCode": "Input Code",
+            "outputText": "Output Text"
+        },
+        "buttons": {
+            "runCode": "RUN CODE",
+            "goBack": "GO BACK"
+        }
+    }
+}
