@@ -67,6 +67,7 @@ From the home screen:
 - When the listener is active and the configured hotkey is pressed, IC reads the current clipboard, sends it to AI with the configured system prompt, and writes the response back to the clipboard. Concurrent requests are blocked — triggering the hotkey while a request is already in progress has no effect.
 - The key can be deleted at any time, returning the application to the setup screen.
 - The Help button opens the built-in guide with a full usage walkthrough and hotkey reference.
+- The Console button opens the application's debugging console. (Be careful what you do there).
 - Minimizing the window sends the application to the system tray. It can be restored via the tray icon or its context menu.
 
 ## Configuration

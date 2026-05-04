@@ -19,7 +19,15 @@ from helpers.checkers import hasInternet
 from qtpy.QtWidgets import QApplication
 from qtpy.QtGui import QIcon
 
-from screens import SetupScreen, HomeScreen, ErrorScreen, HelpScreen, LoadingScreen
+from screens import (
+    SetupScreen, 
+    HomeScreen, 
+    ErrorScreen, 
+    HelpScreen, 
+    LoadingScreen, 
+    ConsoleScreen
+)
+
 from templates import DefaultTemplate
 
 from helpers.builders import Object
@@ -65,12 +73,14 @@ class App(QFlow.App):
         self.errorScreen = ErrorScreen(parent=self)
         self.helpScreen = HelpScreen(parent=self)
         self.loadingScreen = LoadingScreen(parent=self)
+        self.consoleScreen = ConsoleScreen(parent=self)
         
         self.addScreen(self.setupScreen)
         self.addScreen(self.homeScreen)
         self.addScreen(self.errorScreen)
         self.addScreen(self.helpScreen)
         self.addScreen(self.loadingScreen)
+        self.addScreen(self.consoleScreen)
 
         if not hasInternet():
             self.setScreen(self.errorScreen.name)
